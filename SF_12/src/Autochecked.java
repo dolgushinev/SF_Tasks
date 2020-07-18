@@ -1,5 +1,5 @@
 public interface Autochecked {
     public default void perfornTask() {
-//        Печатает сообщение о том, что задание выполнено
+        System.out.println("Задание выполнено. Задание было проверено автоматически");
     }
 }
