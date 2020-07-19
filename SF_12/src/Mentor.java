@@ -27,7 +27,7 @@ public class Mentor extends Person implements Stuff {
         ➜ Если у ментора плохое настроение, то он задачу не принимает. Должно быть напечатано сообщение о том, что задача (в сообщении указать номер задачи) не принято и вернуть false.
         ➜ Иначе напечатать сообщение о том, что задача принята и вернуть true.*/
 
-        if (Math.random() * 3000 > NUM_FOR_RANDOM_CLC) {
+        if (Math.random() * 2000 > NUM_FOR_RANDOM_CLC) {
             setMood(true);
             System.out.println("Задание выполнено. У ментора  отличное настроение\n");
         } else {
