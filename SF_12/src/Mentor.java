@@ -1,9 +1,9 @@
-public class Мentor extends Person implements Stuff {
+public class Mentor extends Person implements Stuff {
 
     private boolean mood;
     private final int NUM_FOR_RANDOM_CLC = 1000;
 
-    public Мentor(String name, int age) {
+    public Mentor(String name, int age) {
         super(name, age);
         setMood(true);
     }
@@ -27,10 +27,12 @@ public class Мentor extends Person implements Stuff {
         ➜ Если у ментора плохое настроение, то он задачу не принимает. Должно быть напечатано сообщение о том, что задача (в сообщении указать номер задачи) не принято и вернуть false.
         ➜ Иначе напечатать сообщение о том, что задача принята и вернуть true.*/
 
-        if (Math.random() * 5000 > NUM_FOR_RANDOM_CLC) setMood(true);
-        else {
+        if (Math.random() * 3000 > NUM_FOR_RANDOM_CLC) {
+            setMood(true);
+            System.out.println("Задание выполнено. У ментора  отличное настроение\n");
+        } else {
             setMood(false);
-            System.out.println("Задача не принята: " + task.getNumber());
+            System.out.println("Задание не выполнено, у ментора настроение неочень. Необходимо повторить попытку");
         }
         return isMood();
     }

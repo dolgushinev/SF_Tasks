@@ -2,10 +2,10 @@ public class Student extends Person {
 
     private int taskComplitedCnt;
     private static int allStudentTasksComplitedCnt = 0;
-    private Мentor mentor;
+    private Mentor mentor;
     private boolean allTasksComplited;
 
-    public Student(String name, int age, Мentor mentor) {
+    public Student(String name, int age, Mentor mentor) {
         super(name, age);
         this.mentor = mentor;
         this.allTasksComplited = false;
@@ -28,11 +28,11 @@ public class Student extends Person {
         this.allTasksComplited = allTasksComplited;
     }
 
-    public Мentor getMentor() {
+    public Mentor getMentor() {
         return mentor;
     }
 
-    public void setMentor(Мentor mentor) {
+    public void setMentor(Mentor mentor) {
         this.mentor = mentor;
     }
 
@@ -44,20 +44,28 @@ public class Student extends Person {
           ➜ Если студент решил все задачи из массива, то напечатать об этом сообщение и выставить true в соответствующее поле
           ➜ Иначе напечатать сообщение о том, что не все задачи решены и вернуть false */
 
-        for (int i = taskComplitedCnt; i < taskComplitedCnt + taskCnt; i++) {
+        System.out.println("Вызван doTasks, taskComplitedCnt = " + taskComplitedCnt + ", taskCnt = " + taskCnt + "\n");
+
+        int limitIndex = taskComplitedCnt + taskCnt;
+
+        for (int i = taskComplitedCnt; i < limitIndex; i++) {
             if (isAllTasksComplited()) {
-                System.out.println("Все задачи из массива уже были решены ранее");
+                System.out.println("У студента " + this.getName() + " все задачи из массива уже были решены ранее");
                 break;
             }
+            System.out.println("**************************** В работе task с id = " + tasks[i].getNumber() +
+                    " ****************************");
             doTask(tasks[i]);
             if (i == tasks.length - 1) {
-                System.out.println("Все задачи из массива решены");
+                System.out.println("У студента " + this.getName() + " все задачи из массива решены");
                 setAllTasksComplited(true);
+                break;
             }
         }
 
         if (!isAllTasksComplited())
-            System.out.println("Внимание не все задачи решены");
+            System.out.println("!!!Внимание, у студента " + this.getName() +
+                    " пока не все задачи решены, будет еще один вызов doTasks!!!\n");
 
         return isAllTasksComplited();
     }
@@ -68,10 +76,11 @@ public class Student extends Person {
          Не забудьте увеличить число решенных студентом и всеми студентами задач */
 
         if (task instanceof DragAndDrop || task instanceof Test) {
-            ((Autochecked) task).perfornTask();
+            ((Autochecked) task).performTask();
+            taskComplitedCnt++;
+            allStudentTasksComplitedCnt++;
         } else {
-            while (getMentor().checkCode(task)) {
-                System.out.println("Нужна еще попытка. У ментора было плохое настроение");
+            while (!getMentor().checkCode(task)) {
             }
             allStudentTasksComplitedCnt++;
             taskComplitedCnt++;

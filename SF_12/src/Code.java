@@ -1,4 +1,4 @@
-public class Code extends Task{
+public class Code extends Task {
     String codeText;
 
     public Code() {
