@@ -1,4 +1,5 @@
 public class Cat {
-    /* implement it */
+    public void pet() {
+        System.out.println("Cat purrs");
+    }
 }
-
